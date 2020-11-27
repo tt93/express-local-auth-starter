@@ -1,0 +1,8 @@
+{
+    "prod": false,
+    "env": "dev",
+    "auth": {
+        "passwordSaltRounds": 8,
+        "jwtSecret": "not-a-production-secret"
+    }
+}
