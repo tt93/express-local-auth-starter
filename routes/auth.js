@@ -8,6 +8,8 @@ router.get('/log-in', function(req, res, next) {
   res.render('auth/log-in', { title: 'Express' });
 });
 
+// Returns JSON, the page can make an ajax call to authorize
+// Or this can be used as an API endpoint.
 router.post('/log-in', async function(req, res, next) {
     const request = req.body;
     const result = await authService.authenticateLocal(request);
@@ -17,12 +19,13 @@ router.post('/log-in', async function(req, res, next) {
 
 router.get('/register', function(req, res, next) {
     res.render('auth/register', { title: 'Express' });
-  });
-  
-router.post('/register', function(req, res, next) {
+});
+
+// Returns JSON, the page can make an ajax call to authorize
+// Or this can be used as an API endpoint.
+router.post('/register', async function(req, res, next) {
     const request = req.body;
     const result = await authService.registerLocal(request);
-
     return res.json(result);
 });
 

@@ -1,4 +1,4 @@
-const getDataContext = require('../data/get-data-context');
+const getDataContext = require('../data/get-db-context');
 const bcrypt = require('bcrypt');
 
 async function run() {

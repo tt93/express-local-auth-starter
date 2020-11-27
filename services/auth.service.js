@@ -1,4 +1,4 @@
-const getDataContext = require('../data/get-data-context');
+const getDbContext = require('../data/get-db-context');
 const { Op } = require("sequelize");
 const lib = require('../lib');
 const bcrypt = require('bcrypt');
@@ -9,7 +9,7 @@ const authenticateLocal = async (userData) => {
     let { email, password } = userData;
     email = lib.normalizeStr(email);
 
-    const db = await getDataContext();
+    const db = await getDbContext();
     const existing = await db.models.User.findOne({
         where: {
             email: email
@@ -52,7 +52,7 @@ const registerLocal = async (userData) => {
     username = lib.normalizeStr(username);
     const saltRounds = config.auth.passwordSaltRounds;
 
-    const db = await getDataContext();
+    const db = await getDbContext();
     const existing = await db.models.User.findOne({
         where: {
             [Op.or]: [

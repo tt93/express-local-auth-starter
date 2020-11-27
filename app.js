@@ -28,8 +28,11 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
+// parseAuth middleware will detect if there is a 
+// token or an auth cookie.
 app.use(parseAuth);
+
+// Routes are registered after parse auth
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 
