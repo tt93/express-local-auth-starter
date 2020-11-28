@@ -1,4 +1,4 @@
-# Express Auth Started
+# Express Auth Starter
 
 Get started quickly with an express project that has a local authentication system built in.
 
