@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <div class="container">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-  </body>
+
+    <div class="button-group">
+      <a href="/auth/register">Create Account</a>
+      <a href="/auth/log-in">Log In</a>
+      <button id="btn-clear-token">Clear Token</button>
+    </div>
+    <div class="form-control">
+      <label>Auth token:</label>
+      <input disabled type="text" id="input-token" />
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        document.querySelector('#input-token').value = token;
+      }
+
+      document.querySelector('#btn-clear-token').addEventListener('click', () =>{
+        localStorage.removeItem('authToken');
+        document.querySelector('#input-token').value = null;
+      })
+
+    })()
+  </script>
+</body>
+
 </html>
